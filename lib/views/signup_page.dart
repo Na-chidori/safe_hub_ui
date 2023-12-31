@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:safe_hub_ui/views/login_page.dart';
 import 'package:safe_hub_ui/views/onboarding_screen.dart';
+import 'package:safe_hub_ui/views/events.dart';
 import 'package:get/get.dart';
 
 class SignupPage extends StatelessWidget {
@@ -102,7 +103,7 @@ class SignupPage extends StatelessWidget {
 
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(()=>HomeScreen());
+                        Get.to(()=>EventScreen());
                       },
                       child: const Text(
                         "Sign up",

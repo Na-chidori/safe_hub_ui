@@ -43,7 +43,7 @@ class _BottomNavState extends State<BottomNav> {
         },
         icons: const [
           Icons.home,
-          Icons.search,
+          Icons.schedule,
           Icons.person,
           Icons.shopping_cart,
           Icons.settings

@@ -21,8 +21,8 @@ List<DateModel> getDates(){
 List<EventTypeModel> getEventTypes(){
 
   List<EventTypeModel> events = [
-    new EventTypeModel(imgAssetPath:"assets/concert.png",eventType:"Concert"),
-    new EventTypeModel(imgAssetPath:"assets/sports.png",eventType:"Sports"),
+    new EventTypeModel(imgAssetPath:"assets/concert.png",eventType:"Panel Discussions"),
+    new EventTypeModel(imgAssetPath:"assets/sports.png",eventType:"Game Nights"),
     new EventTypeModel(imgAssetPath:"assets/education.png",eventType: "Education"),
   ];
   return events;

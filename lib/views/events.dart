@@ -34,7 +34,7 @@ class _EventScreenState extends State<EventScreen> {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                  color: Color(0xff102733)
+                  color: Colors.orange[100],
               ),
             ),
             SingleChildScrollView(
@@ -45,41 +45,16 @@ class _EventScreenState extends State<EventScreen> {
                   children: <Widget>[
                     Row(
                       children: <Widget>[
-                        Image.asset("assets/logo.png",height: 28,),
-                        SizedBox(width: 8,),
-                        Row(
-                          children: <Widget>[
-                            Text("UVE", style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800
-                            ),),
-                            Text("UVE", style: TextStyle(
-                                color: Color(0xffFCCD00),
-                                fontSize: 22,
-                                fontWeight: FontWeight.w800
-                            ),)
-                          ],
-                        ),
-                        Spacer(),
-                        Image.asset("assets/notify.png", height: 22,),
-                        SizedBox(width: 16,),
-                        Image.asset("assets/menu.png", height: 22,)
-                      ],
-                    ),
-                    SizedBox(height: 20,),
-                    Row(
-                      children: <Widget>[
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text("Hello, Sanskar!", style: TextStyle(
+                            Text("Hello!", style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w700,
                                 fontSize: 21
                             ),),
                             SizedBox(height: 6,),
-                            Text("Let's explore what’s happening nearby",
+                            Text("Let's explore what’s happening in our Hub",
                               style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 15
@@ -95,11 +70,7 @@ class _EventScreenState extends State<EventScreen> {
                             ),
                             borderRadius: BorderRadius.circular(30),
                           ),
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(30),
-                              child: Image.asset("assets/profilepic.jpg", height: 40,)),
-                        )
-                      ],
+                        ),],
                     ),
                     SizedBox(height: 20,),
 

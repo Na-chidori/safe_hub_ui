@@ -4,14 +4,14 @@ class HomeScreen extends StatelessWidget {
   List catNames =[
     'Category',
     'Classes',
-    'Opportunity_Listing',
+    'Opportunity',
     'Books',
     'Podcasts',
   ];
   List<Color> catColors=[
-    Color(0xFFFFF3E0),
-    Color(0xFFFFE0B2),
-    Color(0xFFFFCC80),
+    Color(0xFFFFB74D),
+    Color(0xFFFFB74D),
+    Color(0xFFFFB74D),
     Color(0xFFFFB74D),
     Color(0xFFFFA726),
   ];
@@ -99,38 +99,43 @@ class HomeScreen extends StatelessWidget {
             padding:EdgeInsets.only(top: 20, left:15,right:15),
             child: Column(children:[
               GridView.builder(
-                shrinkWrap:true,
-                physics:NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount:3,
-                  childAspectRatio:1.1,
+                  crossAxisCount: 3,
+                  childAspectRatio: 1.1,
                 ),
-                itemBuilder: (context,index) {
-                  return Column(
-                    children:[
-                      Container(
-                        height:60,
-                        width:60,
-                        decoration:BoxDecoration(
-                          color:catColors[index],
-                          shape:BoxShape.circle,
+                itemCount: catNames.length, // Use the length of catNames as itemCount
+                itemBuilder: (context, index) {
+                  if (index < catNames.length) { // Check if index is within bounds
+                    return Column(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                            color: catColors[index],
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: catIcons[index],
+                          ),
                         ),
-                        child:Center(
-                          child: catIcons[index],
-                        ),
-                      ),
-                      SizedBox(height:10),
-                      Text(
-                        catNames[index],
-                        style:TextStyle(
-                          fontSize: 16,
-                          fontWeight:FontWeight.w500,
-                          color: Colors.black.withOpacity(0.7),
+                        SizedBox(height: 10),
+                        Text(
+                          catNames[index],
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black.withOpacity(0.7),
+                          ),
                         )
-                      )
-                    ],
-                  );
-                }
+                      ],
+                    );
+                  } else {
+                    return Container(); // Return an empty container for out-of-bounds indices
+                  }
+                },
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -145,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       "See All",
                       style:TextStyle(
-                        fontSize:10,
+                        fontSize:18,
                         fontWeight: FontWeight.w500,
                         color:Color(0xFFFFB74D),
                       ),
@@ -181,7 +186,7 @@ class HomeScreen extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.all(10),
-                            child:Image.asset("images/${imgList[index]}.png",width:100,height: 100,),
+                            child:Image.asset("assets/${imgList[index]}.png",width:100,height: 100,),
                           ),
                           SizedBox(height:10),
                           Text(
