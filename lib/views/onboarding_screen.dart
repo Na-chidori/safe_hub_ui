@@ -211,19 +211,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showUnselectedLabels: true,
-        iconSize: 32,
-        selectedItemColor:Color(0xFFFFCC80),
-        selectedFontSize: 18,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), label:'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.schedule), label:'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label:'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label:'Home'),
-        ],
-      ),
     );
   }
 }

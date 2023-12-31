@@ -48,7 +48,7 @@ class SignupPage extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
-                          fillColor: Colors.purple.withOpacity(0.1),
+                          fillColor: Colors.orange.withOpacity(0.1),
                           filled: true,
                           prefixIcon: const Icon(Icons.person)),
                     ),
@@ -61,7 +61,7 @@ class SignupPage extends StatelessWidget {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
-                          fillColor: Colors.purple.withOpacity(0.1),
+                          fillColor: Colors.orange.withOpacity(0.1),
                           filled: true,
                           prefixIcon: const Icon(Icons.email)),
                     ),
@@ -74,7 +74,7 @@ class SignupPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
                             borderSide: BorderSide.none),
-                        fillColor: Colors.purple.withOpacity(0.1),
+                        fillColor: Colors.orange.withOpacity(0.1),
                         filled: true,
                         prefixIcon: const Icon(Icons.password),
                       ),
@@ -89,7 +89,7 @@ class SignupPage extends StatelessWidget {
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(18),
                             borderSide: BorderSide.none),
-                        fillColor: Colors.purple.withOpacity(0.1),
+                        fillColor: Colors.orange.withOpacity(0.1),
                         filled: true,
                         prefixIcon: const Icon(Icons.password),
                       ),
