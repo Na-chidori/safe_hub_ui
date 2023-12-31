@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:safe_hub_ui/views/bottom_nav.dart';
 import 'package:safe_hub_ui/views/coworking_space.dart';
 import 'package:safe_hub_ui/views/onboarding_screen.dart';
 import 'package:safe_hub_ui/views/signup_page.dart';
 import 'package:safe_hub_ui/views/events.dart';
 import 'package:safe_hub_ui/views/aboutpage.dart';
+
 class loginView extends StatelessWidget {
   const loginView({super.key});
 
@@ -30,13 +32,22 @@ class loginView extends StatelessWidget {
   }
 
   _header(context) {
-    return const Column(
+    return Column(
       children: [
         Text(
           "Welcome Back",
-          style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+          style: TextStyle(
+            fontSize: 40,
+            fontWeight: FontWeight.bold,
+            color: Colors.blue.shade900,
+          ),
         ),
-        Text("Enter your credential to login"),
+        const Text("Enter your credential to login",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+              color: Colors.blueGrey,
+            )),
       ],
     );
   }
@@ -50,9 +61,8 @@ class loginView extends StatelessWidget {
               hintText: "Username",
               border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(18),
-                  borderSide: BorderSide.none
-              ),
-              fillColor: Colors.purple.withOpacity(0.1),
+                  borderSide: BorderSide.none),
+              fillColor: Colors.blue.withOpacity(0.1),
               filled: true,
               prefixIcon: const Icon(Icons.person)),
         ),
@@ -63,7 +73,7 @@ class loginView extends StatelessWidget {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.blue.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password),
           ),
@@ -72,16 +82,20 @@ class loginView extends StatelessWidget {
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            Get.to(()=>Coworking());
+            Get.to(() => const BottomNav());
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.blue,
           ),
           child: const Text(
             "Login",
-            style: TextStyle(fontSize: 20),
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         )
       ],
@@ -91,8 +105,9 @@ class loginView extends StatelessWidget {
   _forgotPassword(context) {
     return TextButton(
       onPressed: () {},
-      child: const Text("Forgot password?",
-        style: TextStyle(color: Colors.purple),
+      child: const Text(
+        "Forgot password?",
+        style: TextStyle(color: Colors.blue),
       ),
     );
   }
@@ -104,10 +119,12 @@ class loginView extends StatelessWidget {
         const Text("Dont have an account? "),
         TextButton(
             onPressed: () {
-              Get.to(()=>SignupPage());
+              Get.to(() => SignupPage());
             },
-            child: const Text("Sign Up", style: TextStyle(color: Colors.purple),)
-        )
+            child: const Text(
+              "Sign Up",
+              style: TextStyle(color: Colors.blue),
+            ))
       ],
     );
   }

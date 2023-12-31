@@ -1,141 +1,173 @@
 import 'package:flutter/material.dart';
-import 'package:safe_hub_ui/views/profile.dart';
 import 'package:get/get.dart';
-class Coworking extends StatefulWidget {
+import 'package:safe_hub_ui/views/profile.dart';
+
+class CoWorkingSpace extends StatefulWidget {
+  const CoWorkingSpace({Key? key}) : super(key: key);
+
   @override
-  _CoworkingState createState() => _CoworkingState();
+  _CoWorkingSpaceState createState() => _CoWorkingSpaceState();
 }
 
-class _CoworkingState extends State<Coworking> {
+class _CoWorkingSpaceState extends State<CoWorkingSpace> {
+  late List<Map<String, String>> filteredCompanies;
+  TextEditingController searchController = TextEditingController();
 
-  final List<Map<String, dynamic>> _listItem = [
-    {"image": 'assets/two.jpg'},
-    {"image": 'assets/three.jpg'},
-    {"image": 'assets/four.jpg'},
-    {"image": 'assets/five.jpg'},
-    {"image": 'assets/one.jpg'},
-    {"image": 'assets/two.jpg'},
+  // Sample data of companies
+  dynamic companies = [
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 1",
+      "location": "Location 1",
+      "post": "assets/safehub.jpg"
+    },
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 2",
+      "location": "Location 2",
+      "post": "assets/safehub.jpg"
+    },
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 3",
+      "location": "Location 3",
+      "post": "assets/safehub.jpg"
+    },
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 4",
+      "location": "Location 4",
+      "post": "assets/safehub.jpg"
+    },
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 5",
+      "location": "Location 5",
+      "post": "assets/safehub.jpg"
+    },
+    {
+      "logo":
+          "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
+      "name": "Company 6",
+      "location": "Location 6",
+      "post": "assets/safehub.jpg"
+    },
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    filteredCompanies = List.from(companies);
+  }
+
+  void filterCompanies(String query) {
+    List<Map<String, String>> filteredList = companies
+        .where((company) =>
+            company['name']!.toLowerCase().contains(query.toLowerCase()) ||
+            company['location']!.toLowerCase().contains(query.toLowerCase()))
+        .toList();
+    setState(() {
+      filteredCompanies = filteredList;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        title: Text("Safe_Hub_Working_Space"),
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(10.0),
-            child: Container(
-              width: 36,
-              height: 30,
-              decoration: BoxDecoration(
-                  color: Colors.grey[800],
-                  borderRadius: BorderRadius.circular(10)
-              ),
+        appBar: AppBar(
+          title: TextField(
+            controller: searchController,
+            onChanged: filterCompanies,
+            decoration: const InputDecoration(
+              hintText: 'Search...',
+              border: InputBorder.none,
+              prefixIcon: Icon(Icons.search),
             ),
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: Container(
-          padding: EdgeInsets.all(20.0),
-          child: Column(
-            children: <Widget>[
-              Container(
-                width: double.infinity,
-                height: 250,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    image: DecorationImage(
-                        image: AssetImage('assets/safehub.jpg'),
-                        fit: BoxFit.cover
-                    )
-                ),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      gradient: LinearGradient(
-                          begin: Alignment.bottomRight,
-                          colors: [
-                            Colors.orangeAccent.withOpacity(.4),
-                            Colors.orangeAccent.withOpacity(.2),
-                          ]
-                      )
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: <Widget>[
-                      Text("Learn and connect with companies,Start-ups, entreprnuers here in our Hub", style: TextStyle(color: Colors.white, fontSize: 35,),),
-                      SizedBox(height: 30,),
-                      Container(
-                        height: 50,
-                        margin: EdgeInsets.symmetric(horizontal: 40),
-                      ),
-                      SizedBox(height: 30,),
-                    ],
-                  ),
-                ),
-              ),
-              SizedBox(height: 20,),
-              Expanded(
-                  child: GridView.count(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    children: _listItem.map((item) => Card(
-                      color: Colors.transparent,
-                      elevation: 0,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            image: DecorationImage(
-                                image: AssetImage(item["image"]),
-                                fit: BoxFit.cover
-                            )
-                        ),
-                        child: Transform.translate(
-                          offset: Offset(55, -58),
-                          child: Container(
-                            width: 30,
-                            // height: 30,
-                            clipBehavior: Clip.hardEdge,
-                            decoration: BoxDecoration(),
-                            child: Center(
-                              child: MaterialButton(
-                                onPressed: () {
-                                  Get.to(()=>Profile());
-                                },
-                                color: Colors.orangeAccent[50],
-                                height: 35,
-                                minWidth: 40,
-                                padding: EdgeInsets.all(0),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8)
-                                ),
-                              ),
-                            ),
-                          ),
-                          // child: InkWell(
-                          //   onLongPress: () {},
-                          //   child: Container(
-                          //     margin: EdgeInsets.symmetric(horizontal:70, vertical: 71),
-                          //     decoration: BoxDecoration(
-                          //       borderRadius: BorderRadius.circular(8),
-                          //       color: Colors.white
-                          //     ),
-                          //     child: Icon(Icons.bookmark_border, size: 22,),
-                          //   ),
-                          // ),
-                        ),
-                      ),
-                    )).toList(),
-                  )
-              )
-            ],
           ),
+        ),
+        body: ListView(
+          scrollDirection: Axis.vertical,
+          children:
+              filteredCompanies.map((company) => CompanyCard(company)).toList(),
+        ));
+  }
+}
+
+class CompanyCard extends StatelessWidget {
+  final Map<String, dynamic> company;
+
+  const CompanyCard(this.company, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Get.to(ProfilePage());
+      },
+      child: Container(
+        margin: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: const Color.fromARGB(255, 219, 231, 241),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        child: Column(
+          children: [
+            Row(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  backgroundImage: NetworkImage(company['logo'] ?? ''),
+                ),
+                const SizedBox(width: 10),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      company['name'] ?? '',
+                      style: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      company['location'] ?? '',
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            Image.asset(
+              company['post'] ?? '',
+              fit: BoxFit.cover,
+            ),
+            const SizedBox(height: 10),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(Icons.favorite_border),
+                    SizedBox(width: 10),
+                    Icon(Icons.comment),
+                    SizedBox(width: 10),
+                    Icon(Icons.share),
+                  ],
+                ),
+                Icon(Icons.bookmark_border),
+              ],
+            ),
+          ],
         ),
       ),
     );
