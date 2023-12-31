@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:safe_hub_ui/views/login_page.dart';
+import 'package:safe_hub_ui/views/signup_page.dart';
 import 'package:get/get.dart';
 void main() async{
   runApp(MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       title: 'Flutter Demo',
-      home:loginView(),
+      home:SignupPage(),
     );
   }
 }

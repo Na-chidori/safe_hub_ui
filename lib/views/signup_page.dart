@@ -111,7 +111,7 @@ class SignupPage extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
                         padding: const EdgeInsets.symmetric(vertical: 16),
-                        backgroundColor: Colors.purple,
+                        backgroundColor: Colors.orange,
                       ),
                     )
                 ),
@@ -123,7 +123,7 @@ class SignupPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                     border: Border.all(
-                      color: Colors.purple,
+                      color: Colors.orange,
                     ),
                     boxShadow: [
                       BoxShadow(
@@ -155,7 +155,7 @@ class SignupPage extends StatelessWidget {
                         const Text("Sign In with Google",
                           style: TextStyle(
                             fontSize: 16,
-                            color: Colors.purple,
+                            color: Colors.orange,
                           ),
                         ),
                       ],
@@ -171,7 +171,7 @@ class SignupPage extends StatelessWidget {
                         onPressed: () {
                           Get.to(()=>loginView());
                         },
-                        child: const Text("Login", style: TextStyle(color: Colors.purple),)
+                        child: const Text("Login", style: TextStyle(color: Colors.orange),)
                     )
                   ],
                 )

@@ -72,12 +72,12 @@ class loginView extends StatelessWidget {
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            Get.to(()=>Coworking());
+            Get.to(()=>HomeScreen());
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),
             padding: const EdgeInsets.symmetric(vertical: 16),
-            backgroundColor: Colors.purple,
+            backgroundColor: Colors.orange,
           ),
           child: const Text(
             "Login",
@@ -92,7 +92,7 @@ class loginView extends StatelessWidget {
     return TextButton(
       onPressed: () {},
       child: const Text("Forgot password?",
-        style: TextStyle(color: Colors.purple),
+        style: TextStyle(color: Colors.orange),
       ),
     );
   }
@@ -106,7 +106,7 @@ class loginView extends StatelessWidget {
             onPressed: () {
               Get.to(()=>SignupPage());
             },
-            child: const Text("Sign Up", style: TextStyle(color: Colors.purple),)
+            child: const Text("Sign Up", style: TextStyle(color: Colors.orange),)
         )
       ],
     );
