@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:safe_hub_ui/views/coworking_space.dart';
-import 'package:safe_hub_ui/views/profile.dart';
+import 'package:safe_hub_ui/views/Screens/coworking_space.dart';
+import 'package:safe_hub_ui/views/Screens/events.dart';
+import 'package:safe_hub_ui/views/Screens/aboutpage.dart';
+import 'package:safe_hub_ui/views/Screens/HomeScreen.dart';
 import 'package:get/get.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
@@ -14,17 +16,17 @@ class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
 
   @override
-  _BottomNavState createState() => _BottomNavState();
+  _BottomNavState createState()
+  => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
   final List<Widget> _children = [
-    const CoWorkingSpace(),
-    ProfilePage(),
-    ProfilePage(),
-    ProfilePage(),
-    ProfilePage(),
+    HomeScreen(),
+    EventScreen(),
+    CoWorkingSpace(),
+    LeadershipAcademyPage(),
   ];
 
   @override
@@ -32,7 +34,7 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       body: _children[_selectedIndex],
       bottomNavigationBar: MotionTabBar(
-        labels: const ["Home", "Search", "Profile", "Cart", "Settings"],
+        labels: const ["Home", "Event", "coWorking", "leadersipacadamy"],
         initialSelectedTab: "Home",
         tabIconColor: Colors.blueGrey,
         tabSelectedColor: Colors.blueGrey,
@@ -43,10 +45,9 @@ class _BottomNavState extends State<BottomNav> {
         },
         icons: const [
           Icons.home,
-          Icons.schedule,
-          Icons.person,
-          Icons.shopping_cart,
-          Icons.settings
+          Icons.event,
+          Icons.rss_feed_rounded,
+          Icons.info,
         ],
         textStyle: const TextStyle(color: Colors.blueGrey),
       ),

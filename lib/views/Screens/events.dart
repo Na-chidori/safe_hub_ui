@@ -34,7 +34,7 @@ class _EventScreenState extends State<EventScreen> {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                  color: Colors.orange[100],
+                  color: Color(0xff102733)
               ),
             ),
             SingleChildScrollView(

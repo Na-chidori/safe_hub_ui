@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:safe_hub_ui/views/coworking_space.dart';
-import 'package:safe_hub_ui/views/onboarding_screen.dart';
-import 'package:safe_hub_ui/views/signup_page.dart';
-import 'package:safe_hub_ui/views/events.dart';
-import 'package:safe_hub_ui/views/aboutpage.dart';
+import 'package:safe_hub_ui/views/Screens/coworking_space.dart';
+import 'package:safe_hub_ui/views/Screens/HomeScreen.dart';
+import 'package:safe_hub_ui/views/Authentication/signup_page.dart';
+import 'package:safe_hub_ui/views/Screens/events.dart';
+import 'package:safe_hub_ui/views/Screens/aboutpage.dart';
+import 'package:safe_hub_ui/controllers/bottom_nav.dart';
+
 class loginView extends StatelessWidget {
   const loginView({super.key});
 
@@ -52,7 +54,7 @@ class loginView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18),
                   borderSide: BorderSide.none
               ),
-              fillColor: Colors.purple.withOpacity(0.1),
+              fillColor: Colors.orange.withOpacity(0.1),
               filled: true,
               prefixIcon: const Icon(Icons.person)),
         ),
@@ -63,7 +65,7 @@ class loginView extends StatelessWidget {
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
-            fillColor: Colors.purple.withOpacity(0.1),
+            fillColor: Colors.orange.withOpacity(0.1),
             filled: true,
             prefixIcon: const Icon(Icons.password),
           ),
@@ -72,7 +74,7 @@ class loginView extends StatelessWidget {
         const SizedBox(height: 10),
         ElevatedButton(
           onPressed: () {
-            Get.to(()=>HomeScreen());
+            Get.to(()=>BottomNav());
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(),

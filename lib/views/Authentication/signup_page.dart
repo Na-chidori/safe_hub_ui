@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safe_hub_ui/views/login_page.dart';
-import 'package:safe_hub_ui/views/onboarding_screen.dart';
-import 'package:safe_hub_ui/views/events.dart';
+import 'package:safe_hub_ui/views/Authentication/login_page.dart';
+import 'package:safe_hub_ui/views/Screens/HomeScreen.dart';
+import 'package:safe_hub_ui/views/Screens/events.dart';
 import 'package:get/get.dart';
 
 class SignupPage extends StatelessWidget {
@@ -103,9 +103,9 @@ class SignupPage extends StatelessWidget {
 
                     child: ElevatedButton(
                       onPressed: () {
-                        Get.to(()=>EventScreen());
+                        Get.to(()=>HomeScreen());
                       },
-                      child: const Text(
+                      child: const Text( 
                         "Sign up",
                         style: TextStyle(fontSize: 20),
                       ),

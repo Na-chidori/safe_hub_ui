@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:safe_hub_ui/views/profile.dart';
+import 'package:safe_hub_ui/views/Screens/profile.dart';
 
 class CoWorkingSpace extends StatefulWidget {
   const CoWorkingSpace({Key? key}) : super(key: key);
