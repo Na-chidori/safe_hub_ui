@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 
-// companies profile image
+// Companies profile imag
 const String profileImage =
     "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png";
 
-// companies profile page
 class ProfilePage extends StatelessWidget {
   ProfilePage({Key? key}) : super(key: key);
 
@@ -14,7 +13,7 @@ class ProfilePage extends StatelessWidget {
     body: SafeArea(
       child: Column(
         children: [
-          // back button and aliggn it to the left
+          // Back button aligned to the left
           Align(
             alignment: Alignment.topLeft,
             child: IconButton(
@@ -37,6 +36,7 @@ class ProfilePage extends StatelessWidget {
               ),
               child: SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     buildAbout(),
                     const SizedBox(height: 24),
@@ -50,7 +50,7 @@ class ProfilePage extends StatelessWidget {
                     const SizedBox(height: 24),
                     buildInterests(),
                     const SizedBox(height: 24),
-                    buildContact(context),
+                    buildContact(),
                     const SizedBox(height: 24),
                   ],
                 ),
@@ -62,7 +62,7 @@ class ProfilePage extends StatelessWidget {
     ),
   );
 
-  Widget buildHeader() => const Row(
+  Widget buildHeader() => Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       CircleAvatar(
@@ -83,9 +83,9 @@ class ProfilePage extends StatelessWidget {
           ),
           SizedBox(height: 4),
           Text(
-            'SafeHub',
+            'Co-Working Space',
             style: TextStyle(
-              fontSize: 24,
+              fontSize: 18,
               color: Colors.white,
             ),
           ),
@@ -94,7 +94,7 @@ class ProfilePage extends StatelessWidget {
     ],
   );
 
-  Widget buildAbout() => const Column(
+  Widget buildAbout() => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       Text(
@@ -106,64 +106,50 @@ class ProfilePage extends StatelessWidget {
       ),
       SizedBox(height: 16),
       Text(
-        'SafeHub is a coworking space that provides a safe and secure environment for people to work in.',
+        'SafeHub is a modern co-working space that provides a collaborative and secure environment for individuals and startups to work in. We aim to foster creativity and innovation.',
         style: TextStyle(fontSize: 16, height: 1.4),
       ),
     ],
   );
 
   Widget buildSkills() => Column(
-    crossAxisAlignment: CrossAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       _customChip('Skills', skills),
     ],
   );
 
   Widget buildExperience() => Column(
-    // crossAxisAlignment: CrossAxisAlignment.start,
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       _customText('Experience'),
-      buildExperienceItem(
-        company: 'SafeHub',
-        position: 'Co-Founder',
-        duration: '2021 - Present',
-      ),
-      const SizedBox(height: 16),
-      buildExperienceItem(
-        company: 'SafeHub',
-        position: 'Co-Founder',
-        duration: '2021 - Present',
-      ),
+      ...experiences.map(buildExperienceItem).toList(),
     ],
   );
 
-  Widget buildExperienceItem({
-    required String company,
-    required String position,
-    required String duration,
-  }) =>
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '$company - $position',
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            duration,
-            style: TextStyle(color: Colors.grey.shade600),
-          ),
-        ],
-      );
+  Widget buildExperienceItem(String experience) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        experience,
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(height: 4),
+      Text(
+        'Duration: 2021 - Present',
+        style: TextStyle(color: Colors.grey.shade600),
+      ),
+      const SizedBox(height: 16),
+    ],
+  );
 
   Widget buildEducation() => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      const Text(
+      Text(
         'Education',
         style: TextStyle(
           fontSize: 24,
@@ -171,42 +157,28 @@ class ProfilePage extends StatelessWidget {
         ),
       ),
       const SizedBox(height: 16),
-      buildEducationItem(
-        university: 'SafeHub',
-        major: 'Co-Founder',
-        duration: '2021 - Present',
-      ),
-      const SizedBox(height: 16),
-      buildEducationItem(
-        university: 'SafeHub',
-        major: 'Co-Founder',
-        duration: '2021 - Present',
-      ),
+      ...educations.map(buildEducationItem).toList(),
     ],
   );
 
-  Widget buildEducationItem({
-    required String university,
-    required String major,
-    required String duration,
-  }) =>
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            '$university - $major',
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            duration,
-            style: TextStyle(color: Colors.grey.shade600),
-          ),
-        ],
-      );
+  Widget buildEducationItem(String education) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        education,
+        style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      const SizedBox(height: 4),
+      Text(
+        'Duration: 2021 - Present',
+        style: TextStyle(color: Colors.grey.shade600),
+      ),
+      const SizedBox(height: 16),
+    ],
+  );
 
   Widget buildLanguages() => Column(
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -222,28 +194,16 @@ class ProfilePage extends StatelessWidget {
     ],
   );
 
-  Widget buildContact(BuildContext context) => Column(
-    // crossAxisAlignment: CrossAxisAlignment.start,
+  Widget buildContact() => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
       _customText('Contact'),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.phone),
-            color: Colors.blue[900],
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.email),
-            color: Colors.blue[900],
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.location_on),
-            color: Colors.blue[900],
-          ),
+          _customIconButton(Icons.phone),
+          _customIconButton(Icons.email),
+          _customIconButton(Icons.location_on),
         ],
       ),
     ],
@@ -255,15 +215,16 @@ class ProfilePage extends StatelessWidget {
       _customText(title),
       Wrap(
         spacing: 20,
-        children: List.generate(
-          items.length,
-              (index) => Chip(
+        children: items
+            .map(
+              (item) => Chip(
             label: Text(
-              items[index],
+              item,
               style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                  fontSize: 16),
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontSize: 16,
+              ),
             ),
             backgroundColor: Colors.blue[100],
             shadowColor: Colors.blue[100],
@@ -271,9 +232,9 @@ class ProfilePage extends StatelessWidget {
             side: const BorderSide(
               color: Colors.transparent,
             ),
-            // remove border
           ),
-        ),
+        )
+            .toList(),
       ),
     ],
   );
@@ -293,93 +254,27 @@ class ProfilePage extends StatelessWidget {
     ],
   );
 
-  final skills = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
+  Widget _customIconButton(IconData icon) => IconButton(
+    onPressed: () {},
+    icon: Icon(
+      icon,
+      color: Colors.blue[900],
+    ),
+  );
 
-  final languages = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
+  final skills = ['Flutter', 'Dart', 'UI/UX Design', 'Problem Solving'];
 
-  final interests = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
+  final languages = ['English', 'Spanish', 'French'];
 
-  final companies = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
-
-  final universities = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
+  final interests = ['Technology', 'Innovation', 'Networking'];
 
   final experiences = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
+    'Senior Developer - Tech Company A',
+    'Lead UI/UX Designer - Design Studio B',
   ];
 
   final educations = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
-
-  final contacts = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
-
-  final socials = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
-  ];
-
-  final projects = [
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub',
-    'SafeHub'
+    'Master of Computer Science - University C - 2021',
+    'Bachelor of Design - University D - 2018-2021',
   ];
 }

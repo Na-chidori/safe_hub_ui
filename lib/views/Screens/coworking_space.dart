@@ -13,50 +13,13 @@ class _CoWorkingSpaceState extends State<CoWorkingSpace> {
   late List<Map<String, String>> filteredCompanies;
   TextEditingController searchController = TextEditingController();
 
-  // Sample data of companies
   dynamic companies = [
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 1",
-      "location": "Location 1",
-      "post": "assets/safehub.jpg"
-    },
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 2",
-      "location": "Location 2",
-      "post": "assets/safehub.jpg"
-    },
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 3",
-      "location": "Location 3",
-      "post": "assets/safehub.jpg"
-    },
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 4",
-      "location": "Location 4",
-      "post": "assets/safehub.jpg"
-    },
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 5",
-      "location": "Location 5",
-      "post": "assets/safehub.jpg"
-    },
-    {
-      "logo":
-      "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png",
-      "name": "Company 6",
-      "location": "Location 6",
-      "post": "assets/safehub.jpg"
-    },
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 1", "location": "Location 1", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 2", "location": "Location 2", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 3", "location": "Location 3", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 4", "location": "Location 4", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 5", "location": "Location 5", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 6", "location": "Location 6", "post": "assets/safehub.jpg"},
   ];
 
   @override
@@ -79,29 +42,32 @@ class _CoWorkingSpaceState extends State<CoWorkingSpace> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: TextField(
-            controller: searchController,
-            onChanged: filterCompanies,
-            decoration: const InputDecoration(
-              hintText: 'Search...',
-              border: InputBorder.none,
-              prefixIcon: Icon(Icons.search),
-            ),
+      appBar: AppBar(
+        title: TextField(
+          controller: searchController,
+          onChanged: filterCompanies,
+          style: TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintText: 'Search...',
+            border: InputBorder.none,
+            prefixIcon: Icon(Icons.search, color: Colors.white),
+            hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
           ),
         ),
-        body: ListView(
-          scrollDirection: Axis.vertical,
-          children:
-          filteredCompanies.map((company) => CompanyCard(company)).toList(),
-        ));
+        elevation: 0, // Remove app bar shadow
+      ),
+      body: ListView(
+        scrollDirection: Axis.vertical,
+        children: filteredCompanies.map((company) => CompanyCard(company)).toList(),
+      ),
+    );
   }
 }
 
 class CompanyCard extends StatelessWidget {
   final Map<String, dynamic> company;
 
-  const CompanyCard(this.company, {super.key});
+  const CompanyCard(this.company, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,63 +75,66 @@ class CompanyCard extends StatelessWidget {
       onTap: () {
         Get.to(ProfilePage());
       },
-      child: Container(
+      child: Card(
+        elevation: 3, // Add elevation for a modern look
         margin: const EdgeInsets.all(10),
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: const Color.fromARGB(255, 219, 231, 241),
-          borderRadius: BorderRadius.circular(10),
-        ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Row(
-              children: [
-                CircleAvatar(
-                  radius: 30,
-                  backgroundImage: NetworkImage(company['logo'] ?? ''),
-                ),
-                const SizedBox(width: 10),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      company['name'] ?? '',
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                children: [
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundImage: NetworkImage(company['logo'] ?? ''),
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        company['name'] ?? '',
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(
-                      company['location'] ?? '',
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
+                      Text(
+                        company['location'] ?? '',
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
-            const SizedBox(height: 10),
             Image.asset(
               company['post'] ?? '',
               fit: BoxFit.cover,
+              height: 150, // Adjusted image height
+              width: double.infinity,
             ),
-            const SizedBox(height: 10),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Row(
-                  children: [
-                    Icon(Icons.favorite_border),
-                    SizedBox(width: 10),
-                    Icon(Icons.comment),
-                    SizedBox(width: 10),
-                    Icon(Icons.share),
-                  ],
-                ),
-                Icon(Icons.bookmark_border),
-              ],
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.favorite_border),
+                      const SizedBox(width: 10),
+                      Icon(Icons.comment),
+                      const SizedBox(width: 10),
+                      Icon(Icons.share),
+                    ],
+                  ),
+                  Icon(Icons.bookmark_border),
+                ],
+              ),
             ),
           ],
         ),
