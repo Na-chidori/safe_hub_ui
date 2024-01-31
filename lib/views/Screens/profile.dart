@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// Companies profile imag
+
 const String profileImage =
     "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png";
 
@@ -10,7 +10,18 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
     backgroundColor: Color.fromARGB(255, 21, 49, 92),
-    body: SafeArea(
+    body: Stack(
+      children: [
+    // Background Image
+      Positioned.fill(
+      child: Image.asset(
+        'assets/safehub.jpg',
+        fit: BoxFit.cover,
+        width: 100,
+        height: 100,
+      ),
+    ),
+    SafeArea(
       child: Column(
         children: [
           // Back button aligned to the left
@@ -60,6 +71,8 @@ class ProfilePage extends StatelessWidget {
         ],
       ),
     ),
+  ],
+  ),
   );
 
   Widget buildHeader() => Row(
@@ -226,8 +239,8 @@ class ProfilePage extends StatelessWidget {
                 fontSize: 16,
               ),
             ),
-            backgroundColor: Colors.blue[100],
-            shadowColor: Colors.blue[100],
+            backgroundColor: Colors.brown[300],
+            shadowColor: Colors.brown[300],
             elevation: 4,
             side: const BorderSide(
               color: Colors.transparent,
@@ -247,7 +260,7 @@ class ProfilePage extends StatelessWidget {
         style: TextStyle(
           fontSize: 30,
           fontWeight: FontWeight.bold,
-          color: Colors.blue.shade900,
+          color: Colors.brown.shade900,
         ),
       ),
       const SizedBox(height: 16),
@@ -258,7 +271,7 @@ class ProfilePage extends StatelessWidget {
     onPressed: () {},
     icon: Icon(
       icon,
-      color: Colors.blue[900],
+      color: Colors.black26,
     ),
   );
 

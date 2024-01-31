@@ -6,18 +6,14 @@ import 'package:safe_hub_ui/views/Screens/HomeScreen.dart';
 import 'package:get/get.dart';
 import 'package:motion_tab_bar_v2/motion-tab-bar.dart';
 
-// optional, only if using provided badge style
 import 'package:motion_tab_bar_v2/motion-badge.widget.dart';
-
-// optional, only if using "MotionTabBarController" to programmatically change the tab
 import 'package:motion_tab_bar_v2/motion-tab-controller.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({Key? key}) : super(key: key);
 
   @override
-  _BottomNavState createState()
-  => _BottomNavState();
+  _BottomNavState createState() => _BottomNavState();
 }
 
 class _BottomNavState extends State<BottomNav> {
@@ -34,10 +30,10 @@ class _BottomNavState extends State<BottomNav> {
     return Scaffold(
       body: _children[_selectedIndex],
       bottomNavigationBar: MotionTabBar(
-        labels: const ["Home", "Event", "coWorking", "leadersipacadamy"],
+        labels: const ["Home", "Event", "coWorking", "leadershipacademy"],
         initialSelectedTab: "Home",
-        tabIconColor: Colors.blueGrey,
-        tabSelectedColor: Colors.blueGrey,
+        tabIconColor: Colors.brown[300],
+        tabSelectedColor: Colors.orangeAccent[100],// Set the background color to transparent
         onTabItemSelected: (int value) {
           setState(() {
             _selectedIndex = value;
@@ -49,7 +45,7 @@ class _BottomNavState extends State<BottomNav> {
           Icons.rss_feed_rounded,
           Icons.info,
         ],
-        textStyle: const TextStyle(color: Colors.blueGrey),
+        textStyle: const TextStyle(color: Colors.orangeAccent),
       ),
     );
   }

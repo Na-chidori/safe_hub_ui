@@ -14,12 +14,12 @@ class _CoWorkingSpaceState extends State<CoWorkingSpace> {
   TextEditingController searchController = TextEditingController();
 
   dynamic companies = [
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 1", "location": "Location 1", "post": "assets/safehub.jpg"},
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 2", "location": "Location 2", "post": "assets/safehub.jpg"},
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 3", "location": "Location 3", "post": "assets/safehub.jpg"},
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 4", "location": "Location 4", "post": "assets/safehub.jpg"},
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 5", "location": "Location 5", "post": "assets/safehub.jpg"},
-    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 6", "location": "Location 6", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 1", "location": "Type of Company", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 2", "location": "Type of Company", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 3", "location": "Type of Company", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 4", "location": "Type of Company", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 5", "location": "Type of Company", "post": "assets/safehub.jpg"},
+    {"logo": "https://cdn.pixabay.com/photo/2015/03/04/22/35/head-659651_960_720.png", "name": "Company 6", "location": "Type of Company", "post": "assets/safehub.jpg"},
   ];
 
   @override
@@ -42,23 +42,18 @@ class _CoWorkingSpaceState extends State<CoWorkingSpace> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: TextField(
-          controller: searchController,
-          onChanged: filterCompanies,
-          style: TextStyle(color: Colors.white),
-          decoration: InputDecoration(
-            hintText: 'Search...',
-            border: InputBorder.none,
-            prefixIcon: Icon(Icons.search, color: Colors.white),
-            hintStyle: TextStyle(color: Colors.white.withOpacity(0.6)),
-          ),
+      body: Container(
+        decoration: BoxDecoration(
+        gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [Colors.orange[200] ?? Colors.orange,Colors.white ],
         ),
-        elevation: 0, // Remove app bar shadow
       ),
-      body: ListView(
+        child:ListView(
         scrollDirection: Axis.vertical,
         children: filteredCompanies.map((company) => CompanyCard(company)).toList(),
+      ),
       ),
     );
   }

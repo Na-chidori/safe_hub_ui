@@ -31,9 +31,9 @@ List<EventTypeModel> getEventTypes(){
 List<EventsModel> getEvents(){
 
   List<EventsModel> events = [
-    new EventsModel(imgeAssetPath:"assets/tileimg.png",date:"Jan 12, 2019",desc:"Sports Meet in Galaxy Field",address:"Greenfields, Sector 42, Faridabad"),
-    new EventsModel(imgeAssetPath:"assets/second.png",date:"Jan 12, 2019",desc:"Art & Meet in Street Plaza",address:"Galaxyfields, Sector 22, Faridabad"),
-    new EventsModel(imgeAssetPath:"assets/music_event.png",date:"Jan 12, 2019",desc:"Galaxyfields, Sector 22, Faridabad",address:"Youth Music in Gwalior"),
+    new EventsModel(imgeAssetPath:"assets/events/ryla.jpg",date:"Sunday, Jan 14, 2024",desc:"RYLA ቅምሻ",address:"Free for all"),
+    new EventsModel(imgeAssetPath:"assets/second.png",date:"Friday,Jan 12, 2024",desc:"Art & Meet in Bole Brass",address:"200 birr Entrance"),
+    new EventsModel(imgeAssetPath:"assets/events/leadership.jpg",date:"Saturday, January 13, 2024",desc:"Becoming a Leader",address:"Members ONLY!"),
   ];
   return events;
 

@@ -4,6 +4,8 @@ import 'package:safe_hub_ui/models/date_model.dart';
 import 'package:safe_hub_ui/models/event_type_model.dart';
 import 'package:safe_hub_ui/models/events_model.dart';
 
+
+
 class EventScreen extends StatefulWidget {
   @override
   _EventScreenState createState() => _EventScreenState();
@@ -32,7 +34,7 @@ class _EventScreenState extends State<EventScreen> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF102733), Color(0xFF0D1C2D)],
+            colors: [Colors.brown[50] ?? Colors.brown ,Colors.orange[200] ?? Colors.brown],
           ),
         ),
         child: Stack(
@@ -212,7 +214,7 @@ class EventTile extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 30),
       margin: EdgeInsets.only(right: 16),
       decoration: BoxDecoration(
-        color: Color(0xff29404E),
+        color: Colors.brown[300],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -261,6 +263,14 @@ class PopularEventTile extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: Container(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [Colors.black26,Colors.brown[100] ?? Colors.brown ],
+
+                ),
+              ),
               padding: EdgeInsets.only(left: 16),
               width: MediaQuery.of(context).size.width - 100,
               child: Column(
@@ -291,7 +301,7 @@ class PopularEventTile extends StatelessWidget {
                   SizedBox(height: 4),
                   Row(
                     children: <Widget>[
-                      Image.asset("assets/location.png", height: 12),
+                      Image.asset("assets/paid.png", height: 12),
                       SizedBox(width: 8),
                       Text(
                         address,
